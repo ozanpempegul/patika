@@ -1,8 +1,4 @@
-# 10/15 3 incorrect answers. forgot to add legal return
-
 import numpy as np
-
-# converts strings in array to lists
 def convert_to_list(s):
     string_list = list(s)
     string_list.remove("(")
@@ -10,15 +6,12 @@ def convert_to_list(s):
     for i in range(string_list.count(",")):
         string_list.remove(",")
     return string_list
-
-
 def SudokuQuadrantChecker(str_arr):
     rows = []
     illegal_quadrants = list()
     for i in str_arr:
         row = convert_to_list(i)
         rows.append(row)
-
     columns = []
     A = np.array(rows)
     i = 0
@@ -28,8 +21,6 @@ def SudokuQuadrantChecker(str_arr):
             column.append(j)
         columns.append(column)
         i += 1
-
-    # if there exist more than 1 of the same element in the row add that quadrant to illegal quadrants
     i = 0  # row
     current_quadrant = 1
     while i < len(rows):
@@ -42,14 +33,10 @@ def SudokuQuadrantChecker(str_arr):
                     illegal_quadrants.append(current_quadrant + 1)
                 else:
                     illegal_quadrants.append(current_quadrant)
-
             j += 1
         i += 1
         if i % 3 == 0 and i > 0:
             current_quadrant += 3
-
-    # row and column variable names could be swapped
-    # if there exist more than 1 of the same element in the column add that quadrant to illegal quadrants
     i = 0  # column
     current_quadrant = 1
     while i < len(columns):
@@ -71,9 +58,9 @@ def SudokuQuadrantChecker(str_arr):
     for i in illegal_quadrants:
         if str(i) not in result:
             result += str(i) + ","
-    if result == "":
-        return "legal"
-    return result.strip(",")
+    if result:
+        return result.strip(",")
+    return "legal"
 
 print(SudokuQuadrantChecker(["(1,2,3,4,5,6,7,8,9)","(x,x,x,x,x,x,x,x,x)","(6,x,5,x,3,x,x,4,x)","(2,x,1,5,x,x,x,x,x)","(x,x,x,x,x,x,x,x,x)","(x,x,x,x,x,x,x,x,x)","(x,x,x,x,x,x,x,x,x)","(x,x,x,x,x,x,x,x,x)","(x,x,x,x,x,x,x,x,8)"]))
 

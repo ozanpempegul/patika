@@ -10,7 +10,7 @@ def FibonacciChecker(num):
     for i in fibonacci_generator():
         if i > num:
             return "no"
-        if i == num:
+        elif i == num:
             return "yes"
 
 print(FibonacciChecker(12586269025))
