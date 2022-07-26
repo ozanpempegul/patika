@@ -6,7 +6,6 @@ def HappyNumbers(n):
     sum = 0
     for i in str(n):
         sum += int(i)*int(i)
-    print(sum)
     if sum in scanned_numbers:
         return False
 
@@ -14,4 +13,5 @@ def HappyNumbers(n):
 
     return HappyNumbers(sum)
 
-print(HappyNumbers(8))
+for i in range(10):
+    print(HappyNumbers(i), i)

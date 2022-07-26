@@ -7,8 +7,10 @@ def PatternChaser(strParam):
             if strParam.count(strParam[i:j]) >= 2 and len(strParam[i:j]) > len(result[1]):
                 result[0] = "yes"
                 result[1] = strParam[i:j]
-
+    if result[1] == "":
+        return f"no null"
     return f"{result[0]} {result[1]}"
 
 
 print(PatternChaser("da2kr32a2"))
+print(PatternChaser("abcdefa2klailwq"))
